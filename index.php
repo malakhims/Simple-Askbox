@@ -102,8 +102,10 @@ $result = $conn->query("SELECT * FROM questions WHERE visible = 'y' ORDER BY tim
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
-            <label><b>Ask and Submissions</b></label><br/>   
-            <b>Check <a href="/askbox/faq.php">FAQs</a> if you wants</b>
+            <!--the MIKU  image it's just from tenor-->
+            <img src="https://media.tenor.com/ouQzDmgC9CwAAAAi/miku-vocaloid.gif" style="height: 400px;">
+            <br>
+            <label><b>Ask and Submissions</b></label>
             <br>
             <input style="width:50%;height:70px;border-radius: 5px;" type="text" name="question" class="form-control" required>
         </div>
@@ -143,3 +145,4 @@ $result = $conn->query("SELECT * FROM questions WHERE visible = 'y' ORDER BY tim
 
 </body>
 </html>
+
