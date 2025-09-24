@@ -48,36 +48,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 // Fetch unanswered questions (visible = 'n')
 $questionsResult = $mysqli->query("SELECT slug, question FROM questions WHERE visible = 'n' ORDER BY id DESC");
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Answer Page</title>
-    <!-- TinyMCE WYSIWYG -->
-       <script src="https://cdn.tiny.cloud/1/9lr4jbj4uwtlwjr2ihwq9rtkp8668s2ctc5jszpmf5xitce1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '#answer',
-            menubar: false,
-            plugins: 'link lists',
-            toolbar: 'bold italic underline | bullist numlist | link',
-            height: 300
-        });
-    </script>
-
         <!DOCTYPE html>
         <html>
         <head>
         <meta charset="UTF-8">  
         <meta name="viewport" content="width=device-width, initial-scale=0.5">
-        <title>Mala's Askbox</title>
-        <link rel="icon" href="https://mal.ophanimkei.com/images/halo.ico">
-        <meta name="description" content="ask me a question!">
+        <title>Askbox</title>
+        <link rel="icon" href="#">
+        <meta name="description" content="askbox">
         <link href="style.css" rel="stylesheet" type="text/css" media="all"> 
         </head>
         <body>
 
-            <img src="https://ophanimkei.com/images/ellie.jpg" title="by io" style="height: 400px;">
+            <!--the MIKU  image it's just from tenor-->
+            <img src="https://media.tenor.com/ouQzDmgC9CwAAAAi/miku-vocaloid.gif" style="height: 400px;">
 
             <h1>Answer Questions</h1>
 
