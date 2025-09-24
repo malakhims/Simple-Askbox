@@ -5,10 +5,7 @@ check_login(); // This will show login form if not logged in
 session_start();
 
 // Database credentials
-$servername = "localhost";
-$username = "yourdatabasename"; // PUT YOUR DATABASE NAME HERE
-$password = "yourdatabasepassword"; // PUT DATABASEPASSWORD HERE
-$dbname = "yourdatabasename"; // YOUR DATABASE NAAME HERE
+include "config.php";
 
 // Enable errors for debugging
 ini_set('display_errors', 1);
