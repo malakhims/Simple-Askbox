@@ -38,6 +38,17 @@ h1, h2, b {
     
 }
 
+/* Individual ask items */
+/* Kept short in case someone pastes like the entire Bee Movie Script lmao */
+.unansweredask-item {
+    background-color: #f9f9f9;
+    border: 1px solid #dcdcdc;
+    width: 55%;
+    margin-bottom: 20px; 
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
 
 /* Individual ask items */
 .unanswered {
@@ -47,6 +58,22 @@ h1, h2, b {
     margin-bottom: 20px; 
     
 }
+
+
+/* Individual ask items */
+.unaswered-item {
+    background-color: #f9f9f9;
+    border: 1px solid #dcdcdc;
+    width: 55%;
+    margin-bottom: 20px; 
+    padding: 20px;
+    max-height: 400px;   /* or whatever fits */
+    overflow-y: auto;    /* scroll if too long */
+    word-wrap: break-word; /* prevent super long words from breaking layout */
+    
+}
+
+
 
 /* Buttons */
 .cutiepie, .cutiepie2 {
