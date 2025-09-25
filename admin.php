@@ -20,10 +20,19 @@ if ($mysqli->connect_error) {
 
 $formResults = "";
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'hide') {
+    $slugToHide = $_POST['slug'];
+    $stmtHide = $mysqli->prepare("UPDATE questions SET visible = 'h' WHERE slug = ?");
+    $stmtHide->bind_param("s", $slugToHide);
+    $stmtHide->execute();
+    $stmtHide->close();
+}
+
+
 // Handle answer submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $slug = trim($_POST["slug"]);
-    $answer = $_POST["answer"]; // Allow HTML
+    $slug = trim($_POST["slug"] ?? '');
+    $answer = $_POST["answer"] ?? '';
 
     if ($slug && $answer) {
         $stmt = $mysqli->prepare("UPDATE questions SET answer = ?, timestamp = NOW(), visible = 'y' WHERE slug = ?");
@@ -48,6 +57,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 // Fetch unanswered questions (visible = 'n')
 $questionsResult = $mysqli->query("SELECT slug, question FROM questions WHERE visible = 'n' ORDER BY id DESC");
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Answer Page</title>
+    <!-- TinyMCE WYSIWYG -->
+       <script src="xxx" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#answer',
+            menubar: false,
+            plugins: 'link lists',
+            toolbar: 'bold italic underline | bullist numlist | link',
+            height: 300
+        });
+    </script>
+
         <!DOCTYPE html>
         <html>
         <head>
@@ -60,7 +86,7 @@ $questionsResult = $mysqli->query("SELECT slug, question FROM questions WHERE vi
         </head>
         <body>
 
-            <!--the MIKU  image it's just from tenor-->
+                        <!--the MIKU  image it's just from tenor-->
             <img src="https://media.tenor.com/ouQzDmgC9CwAAAAi/miku-vocaloid.gif" style="height: 400px;">
 
             <h1>Answer Questions</h1>
@@ -104,7 +130,14 @@ $questionsResult = $mysqli->query("SELECT slug, question FROM questions WHERE vi
                         while ($row = $questionsResult->fetch_assoc()) {
                             $slug = htmlspecialchars((string)$row['slug']);
                             $question = htmlspecialchars((string)($row['question'] ?? 'No question'));
-                            echo "<div class='ask-item'><strong>$slug</strong> - $question</div>";
+                            echo "<div class='unansweredask-item'>
+                                <form method='post' style='display:inline'>
+                                    <input type='submit' value='Hide'>
+                                    <input type='hidden' name='action' value='hide'>
+                                    <input type='hidden' name='slug' value='$slug'>
+                                </form>
+                                <strong>$slug</strong> - $question
+                            </div>";
                         }
                     } else {
                         echo "<li>No unanswered questions</li>";
