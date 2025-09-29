@@ -64,16 +64,17 @@ $questionsResult = $mysqli->query("SELECT slug, question FROM questions WHERE vi
     <title>Admin Answer Page</title>
     <!-- TinyMCE WYSIWYG -->
        <script src="xxx" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '#answer',
-            menubar: false,
-            plugins: 'link lists',
-            toolbar: 'bold italic underline | bullist numlist | link',
-            height: 300
-        });
-    </script>
-
+        <script>
+            tinymce.init({
+                selector: '#answer',
+                menubar: false,
+                plugins: 'link lists image', // add 'image' if you want <img> support
+                toolbar: 'bold italic underline | bullist numlist | link image',
+                height: 300,
+                paste_data_images: false // 🚫 disables base64 images on paste
+            });
+        </script>
+    
         <!DOCTYPE html>
         <html>
         <head>
