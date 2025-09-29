@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `questions` (
   `question` text NOT NULL,
-  `answer` text NOT NULL DEFAULT 'not answered yet',
+  `answer` text NULL,
   `visible` text NOT NULL DEFAULT 'n',
   `ID` int(11) NOT NULL,
   `timestamp` datetime NOT NULL DEFAULT current_timestamp(),
