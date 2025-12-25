@@ -48,24 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($stmt->execute()) {
                 $formresults = "Your question has been submitted!";
-
-                function sanitize_for_discord($text) {
-                    // 1. Escape Discord markdown
-                    // Characters to escape: \ * _ ~ ` > | [ ] ( )
-                    $text = preg_replace('/([\\\\*_\~`>|\\[\\]()])/', '\\\\$1', $text);
-
-                    // 2. Neutralize mass mentions
-                    $text = str_ireplace('@everyone', '@ｅveryone', $text);
-                    $text = str_ireplace('@here', '@ｈere', $text);
-
-                    // 3. Neutralize user mentions (<@1234567890> or <@!1234567890>)
-                    $text = preg_replace('/<@!?[0-9]+>/', '<＠user>', $text);
-
-                    return $text;
-                }
-
-                // Send Discord webhook with url if you want
-                $webhook_url = "xxx";
+                
+                // Send Discord webhook with question and slug
+                $webhook_url = "https://discord.com/api/webhooks/blahblahblah";
                 $message = "New Question Submitted:\nQuestion: $question\nSlug: $slug";
                 $data = ["content" => $message];
 

@@ -3,21 +3,20 @@ session_start();
 
 // ===== Single User Configuration =====
 $username = 'username';  // Change this to whatever you want
-$password_hash = 'STORESHASHEDPASSWORD';  // Change this. Should be hashed but accepts plaintext (really recommend only doing that for testing)
+$password = 'password';  // Change this
 // ====================================
 
 function check_login() {
-    global $username, $password_hash;
-
+    global $username, $password;
+    
     if (!isset($_SESSION['logged_in'])) {
         if (isset($_POST['username']) && isset($_POST['password'])) {
-            // Verify password with password_verify()
-            if ($_POST['username'] === $username && password_verify($_POST['password'], $password_hash)) {
+            if ($_POST['username'] === $username && $_POST['password'] === $password) {
                 $_SESSION['logged_in'] = true;
                 return true;
             }
         }
-
+        
         show_login_form();
         exit;
     }
@@ -39,7 +38,6 @@ function show_login_form() {
                 line-height: 1.6;
                 margin: 0;
                 padding: 0;
-                background-image:url("images/wallpaperghibli.jpg");
             }
 
             p {
