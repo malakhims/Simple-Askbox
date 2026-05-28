@@ -13,6 +13,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if ($_POST['human_check'] !== 'yes') {
+    die("Failed human check.");
+}
     // Get question from form
     $question = $_POST["question"];
 
@@ -93,13 +97,6 @@ $result = $conn->query("SELECT * FROM questions WHERE visible = 'y' ORDER BY tim
   <link href="style.css" rel="stylesheet" type="text/css" media="all"> 
 </head>
 <body>
-
-    
-  </style>
-</head>
-<body>
-    
-
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
             <!--the MIKU  image it's just from tenor-->
