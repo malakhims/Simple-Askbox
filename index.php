@@ -14,9 +14,18 @@ if ($conn->connect_error) {
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (!empty($_POST['website2'])) {
+        die("Spam detected");
+    }
+
     if ($_POST['human_check'] !== 'yes') {
-    die("Failed human check.");
-}
+        die("Failed human check.");
+    }
+
+    // Get question from form
+
     // Get question from form
     $question = $_POST["question"];
 
@@ -106,6 +115,9 @@ $result = $conn->query("SELECT * FROM questions WHERE visible = 'y' ORDER BY tim
             <br>
             <input style="width:50%;height:70px;border-radius: 5px;" type="text" name="question" class="form-control" required>
         </div>
+        <div style="display:none;">
+                <input type="text" name="website2" autocomplete="off">
+            </div>
         <div class="form-group">
             <input type="submit" class="cutiepie" value="Submit">
         </div>
