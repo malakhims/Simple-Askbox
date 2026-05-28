@@ -19,11 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST['website2'])) {
         die("Spam detected");
     }
-
-    if ($_POST['human_check'] !== 'yes') {
-        die("Failed human check.");
-    }
-
+        
     // Get question from form
 
     // Get question from form
