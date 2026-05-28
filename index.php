@@ -13,14 +13,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     if (!empty($_POST['website2'])) {
         die("Spam detected");
     }
-        
-    // Get question from form
 
-    // Get question from form
     $question = $_POST["question"];
 
     // Check if the question already exists
@@ -148,4 +145,3 @@ $result = $conn->query("SELECT * FROM questions WHERE visible = 'y' ORDER BY tim
 
 </body>
 </html>
-
