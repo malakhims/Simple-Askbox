@@ -2,7 +2,7 @@
 session_start();
 
 // ===== Single User Configuration =====
-$username = 'username';  // Keep as is
+$username = 'testentries';  // Keep as is
 $password = '$password';  // Paste your generated hash here
 // ====================================
 
